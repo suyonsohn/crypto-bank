@@ -4,7 +4,10 @@
   "description": "Build a bank with crypto",
   "main": "bank.js",
   "dependencies": {
+    "assert": "^1.4.1",
+    "buffer": "^5.2.0",
     "duplex-json-stream": "^1.0.1",
+    "fs": "0.0.1-security",
     "net": "^1.0.2",
     "sodium-native": "^2.2.1"
   },
