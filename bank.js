@@ -3,7 +3,7 @@ var net = require('net')
 var fs = require('fs')
 var sodium = require('sodium-native')
 
-var log = []
+var log = require('./data.json')
 var keypair
 
 try {
@@ -45,7 +45,7 @@ var genesisObj = {
     signature: sigToHex(Buffer.from(JSON.stringify(genesisEntry)), secretKey)
 }
 
-log.push(genesisObj)
+log.length === 0 && log.push(genesisObj)
 
 var server = net.createServer(function (socket) {
     socket = jsonStream(socket)
