@@ -3,7 +3,13 @@ var net = require('net')
 var fs = require('fs')
 var sodium = require('sodium-native')
 
-var log = require('./data.json')
+var log
+try {
+    log = require('./data.json')
+} catch (e) {
+    log = []
+}
+
 var keypair
 
 try {
