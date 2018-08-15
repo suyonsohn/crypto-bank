@@ -3,14 +3,13 @@ var net = require('net')
 var fs = require('fs')
 var sodium = require('sodium-native')
 
-var log
+var log, keypair
+
 try {
     log = require('./data.json')
 } catch (e) {
     log = []
 }
-
-var keypair
 
 try {
     keypair = require('./keypair.json')
@@ -36,7 +35,7 @@ var commands = {
     }
 }
 
-commands.balnce = commands.genesis = commands.withdraw
+// commands.balance = commands.genesis = commands.withdraw
 
 var secretKey = Buffer.from(keypair.secretKey, 'hex')
 var publicKey = Buffer.from(keypair.publicKey, 'hex')
@@ -97,7 +96,7 @@ var server = net.createServer(function (socket) {
         console.log(prettyLog)
 
         socket.write({
-            balance: balance
+            balance
         })
     })
 })
